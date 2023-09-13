@@ -4,6 +4,7 @@
 import Cart from "../Cart/Cart";
 import "./Home.css";
 import { useState, useEffect } from "react";
+import Swal from 'sweetalert2'
 
 const Home = () => {
   const [allActors, setAllActors] = useState([]);
@@ -32,7 +33,11 @@ const Home = () => {
 
       const totalRemaining = budget - cost;
       if (cost > budget) {
-        return alert("taka finish");
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Needs More Money!',
+        })
       } else {
         setRemaining(totalRemaining);
         setTotalCost(cost);
